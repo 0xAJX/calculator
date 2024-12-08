@@ -1,0 +1,5 @@
+calculator.code-workspace
+build
+build/*
+tests/__pycache__
+calculator/__pycache__
