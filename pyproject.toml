@@ -3,6 +3,14 @@ name = "calculator"
 version = "0.1.0"
 description = "A simple calculator package"
 authors = ["Abhisek <abhi@jadhav.io>"]
+classifiers = [
+    "Programming Language :: Python :: 3.7",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Development Status :: 3 - Alpha",
+    "Natural Language :: English"
+]
 
 [tool.poetry.dependencies]
 python = ">=3.7,<4.0"
@@ -13,13 +21,3 @@ python = ">=3.7,<4.0"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
-
-[tool.poetry.classifiers]
-classifiers = [
-    "Programming Language :: Python :: 3.7",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-    "Intended Audience :: Developers",
-    "Development Status :: 3 - Alpha",
-    "Natural Language :: English"
-]
