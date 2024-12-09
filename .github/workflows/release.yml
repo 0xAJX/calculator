@@ -30,25 +30,25 @@ jobs:
       run: |
         python -m unittest discover -s tests -p "*.py"
 
-    - name: Generate Release Notes
-      id: release_notes
+    - name: Get the commit messages since the last tag
       run: |
-        # Get commit messages since the last tag
-        echo "Generating release notes..."
-        LAST_TAG=$(git describe --tags --abbrev=0 HEAD^)
-        echo "Last tag: $LAST_TAG"
-        LOG=$(git log ${LAST_TAG}..HEAD --pretty=format:"- %s")
-        echo "Release Notes:"
-        echo "$LOG"
-        echo "::set-output name=notes::$LOG"
+        # Get the current tag
+        TAG_NAME=${GITHUB_REF#refs/tags/}
 
-    - name: Create Release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: ${{ github.ref_name }}
-        release_name: Release ${{ github.ref_name }}
-        body: ${{ steps.release_notes.outputs.notes }}
-        draft: false
-        prerelease: false
+        # Get the previous tag (or fallback to the first commit if no previous tag exists)
+        PREVIOUS_TAG=$(git describe --tags --abbrev=0 HEAD^ || echo "initial-commit")
+
+        # Get the commit messages between the previous tag and the current tag
+        COMMIT_MESSAGES=$(git log $PREVIOUS_TAG..$TAG_NAME --oneline)
+
+        # Set the commit messages as the release body
+        echo "COMMIT_MESSAGES<<EOF" >> $GITHUB_ENV
+        echo "$COMMIT_MESSAGES" >> $GITHUB_ENV
+        echo "EOF" >> $GITHUB_ENV
+
+    - name: Create release notes
+      run: |
+        echo "Release Notes for $TAG_NAME" > release_notes.txt
+        echo "=========================" >> release_notes.txt
+        echo "$RELEASE_BODY" >> release_notes.txt
+        cat release_notes.txt
