@@ -1,19 +1,31 @@
-[project]
+[tool.poetry]
 name = "calculator"
 version = "0.1.0"
-description = "A simple calculator package."
-readme = "README.md"
-requires-python = ">=3.6, <4"  # Specify supported Python versions
+description = "A simple calculator package"
+authors = ["Abhisek <abhi@jadhav.io>"]
 
-[project.urls]
-Homepage = "https://github.com/0xAJX/calculator"
+[tool.poetry.dependencies]
+python = ">=3.7,<4.0"
 
-[project.classifiers]
-Programming Language :: Python :: 3
-Programming Language :: Python :: 3.6
-Programming Language :: Python :: 3.7
-Programming Language :: Python :: 3.8
-Programming Language :: Python :: 3.9
-Programming Language :: Python :: 3.10
-Programming Language :: Python :: 3.11
-License :: OSI Approved :: MIT License
+[tool.poetry.dev-dependencies]
+# No need for pytest, since you're using unittest (unittest is built into Python)
+
+[tool.poetry.classifiers]
+# Classifiers give additional metadata to the package
+classifiers = [
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
+    "Development Status :: 3 - Alpha",
+    "Natural Language :: English"
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
