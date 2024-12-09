@@ -10,16 +10,6 @@ python = ">=3.7,<4.0"
 [tool.poetry.dev-dependencies]
 # No need for pytest, since you're using unittest (unittest is built into Python)
 
-[tool.poetry.classifiers]
-classifiers = [
-    "Programming Language :: Python :: 3.7",
-    "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
-    "Intended Audience :: Developers",
-    "Development Status :: 3 - Alpha",
-    "Natural Language :: English"
-]
-
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
