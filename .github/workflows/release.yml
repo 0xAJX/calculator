@@ -1,14 +1,14 @@
 name: Create Release
 
 on:
+  push:
+    tags:
+      - 'v*'  # Trigger only on tags starting with 'v'
+
   workflow_run:
     workflows: ["Test with Unittest on Multiple Python Versions"]  # The name of your test workflow
     types:
       - completed
-
-  push:
-    tags:
-      - 'v*'  # Trigger only on tags starting with 'v'
 
 jobs:
   release:
