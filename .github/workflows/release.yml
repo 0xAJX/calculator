@@ -39,7 +39,7 @@ jobs:
         PREVIOUS_TAG=$(git describe --tags --abbrev=0 HEAD^ || echo "initial-commit")
 
         # Get the commit messages between the previous tag and the current tag
-        COMMIT_MESSAGES=$(git log $PREVIOUS_TAG..$TAG_NAME --oneline)
+        COMMIT_MESSAGES=Release ${GITHUB_REF#refs/tags/}
 
         # Set the commit messages as the release body
         echo "COMMIT_MESSAGES<<EOF" >> $GITHUB_ENV
