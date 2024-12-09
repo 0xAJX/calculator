@@ -35,9 +35,6 @@ jobs:
         # Get the current tag
         TAG_NAME=${GITHUB_REF#refs/tags/}
 
-        # Get the previous tag (or fallback to the first commit if no previous tag exists)
-        PREVIOUS_TAG=$(git describe --tags --abbrev=0 HEAD^ || echo "initial-commit")
-
         # Get the commit messages between the previous tag and the current tag
         COMMIT_MESSAGES=Release ${GITHUB_REF#refs/tags/}
 
